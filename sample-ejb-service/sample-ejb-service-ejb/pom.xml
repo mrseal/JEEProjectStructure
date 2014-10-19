@@ -52,6 +52,7 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>${project.parent.artifactId}-jar</artifactId>
             <version>${project.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Basic dependency for JEE applications, as defined in Java EE Specification APIs -->

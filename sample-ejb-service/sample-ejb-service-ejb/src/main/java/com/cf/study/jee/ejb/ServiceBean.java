@@ -24,6 +24,11 @@ public class ServiceBean implements ServiceRemote, ServiceLocal {
     private DateResolverBean dateResolver;
 
     public String resolveDate() {
+
+        logger.info("================== EJB Module");
+        logger.info("CLASS LOADER: {}", getClass().getClassLoader().hashCode());
+        logger.info("CONTEXT CLASS LOADER: {}", Thread.currentThread().getContextClassLoader().hashCode());
+
         logger.debug("In EJB - resolving date");
         final DateFormat df = new SimpleDateFormat(DATE_FORMAT);
         return df.format(dateResolver.resolveCurrentDate());

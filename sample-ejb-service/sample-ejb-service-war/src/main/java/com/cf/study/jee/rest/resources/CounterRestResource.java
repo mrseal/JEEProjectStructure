@@ -5,6 +5,9 @@ import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.cf.study.jee.api.ServiceLocal;
 
 /*
@@ -17,6 +20,8 @@ import com.cf.study.jee.api.ServiceLocal;
 @RequestScoped
 public class CounterRestResource {
 
+    Logger logger = LoggerFactory.getLogger(getClass());
+
     @EJB
     private ServiceLocal service;
 
@@ -24,6 +29,9 @@ public class CounterRestResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("date")
     public String getDate() {
+        logger.info("================== WAR Module");
+        logger.info("CLASS LOADER: {}", getClass().getClassLoader().hashCode());
+        logger.info("CONTEXT CLASS LOADER: {}", Thread.currentThread().getContextClassLoader().hashCode());
         return service.resolveDate();
     }
 
