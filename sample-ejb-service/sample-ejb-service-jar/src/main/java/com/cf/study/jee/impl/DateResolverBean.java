@@ -7,8 +7,10 @@ import javax.ejb.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.cf.study.jee.api.DateResolver;
+
 @Singleton
-public class DateResolverBean {
+public class DateResolverBean implements DateResolver {
 
     Logger logger = LoggerFactory.getLogger(getClass());
 

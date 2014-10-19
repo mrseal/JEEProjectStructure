@@ -9,9 +9,8 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.cf.study.jee.api.ServiceLocal;
-import com.cf.study.jee.api.ServiceRemote;
-import com.cf.study.jee.impl.DateResolverBean;
+import com.cf.study.jee.api.*;
+import com.cf.study.jee.impl.*;
 
 @Stateless
 public class ServiceBean implements ServiceRemote, ServiceLocal {
@@ -21,7 +20,16 @@ public class ServiceBean implements ServiceRemote, ServiceLocal {
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Inject
-    private DateResolverBean dateResolver;
+    private DateResolver dateResolver;
+
+    @Inject
+    private SampleDefaultScopedBean defaultScopedBean;
+
+    @Inject
+    private SampleRequestScopedBean requestScopedBean;
+
+    @Inject
+    private SampleSessionScopedBean sessionScopedBean;
 
     public String resolveDate() {
 
@@ -31,7 +39,6 @@ public class ServiceBean implements ServiceRemote, ServiceLocal {
 
         logger.debug("In EJB - resolving date");
         final DateFormat df = new SimpleDateFormat(DATE_FORMAT);
-        return df.format(dateResolver.resolveCurrentDate());
+        return df.format(dateResolver.resolveCurrentDate()) + " " + defaultScopedBean.getState() + " " + requestScopedBean.getState() + " " + sessionScopedBean.getState();
     }
-
 }
