@@ -30,8 +30,8 @@ public class CounterRestResource {
     @Path("date")
     public String getDate() {
         logger.info("================== WAR Module");
-        logger.info("CLASS LOADER: {}", getClass().getClassLoader().hashCode());
-        logger.info("CONTEXT CLASS LOADER: {}", Thread.currentThread().getContextClassLoader().hashCode());
+        logger.info("CLASS LOADER: {}({})", getClass().getClassLoader(), getClass().getClassLoader().hashCode());
+        logger.info("CONTEXT CLASS LOADER: {}({})", Thread.currentThread().getContextClassLoader(), Thread.currentThread().getContextClassLoader().hashCode());
         return service.resolveDate();
     }
 

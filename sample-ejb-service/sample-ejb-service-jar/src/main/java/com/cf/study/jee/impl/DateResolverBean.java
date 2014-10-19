@@ -14,8 +14,8 @@ public class DateResolverBean {
 
     public Date resolveCurrentDate() {
         logger.info("================== JAR Module");
-        logger.info("CLASS LOADER: {}", getClass().getClassLoader().hashCode());
-        logger.info("CONTEXT CLASS LOADER: {}", Thread.currentThread().getContextClassLoader().hashCode());
+        logger.info("CLASS LOADER: {}({})", getClass().getClassLoader(), getClass().getClassLoader().hashCode());
+        logger.info("CONTEXT CLASS LOADER: {}({})", Thread.currentThread().getContextClassLoader(), Thread.currentThread().getContextClassLoader().hashCode());
         return new Date();
     }
 
