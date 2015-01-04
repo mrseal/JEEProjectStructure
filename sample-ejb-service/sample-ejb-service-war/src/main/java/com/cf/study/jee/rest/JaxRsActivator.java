@@ -15,6 +15,6 @@ import javax.ws.rs.core.Application;
 @ApplicationPath("/rest")
 public class JaxRsActivator extends Application {
 
-    /* class body intentionally left blank */
+    /* class body intentionally left empty. Empty class means that whole classpath is scanned for all REST providers.  */
 
 }
